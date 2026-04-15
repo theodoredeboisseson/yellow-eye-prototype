@@ -14,11 +14,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       
       {/* Main Content Area */}
       <div 
-        className={`flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out md:ml-[72px]`}
+        className={`flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out md:ml-64`}
       >
         <Navbar toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
         
-        <main className="flex-1 overflow-y-auto bg-gray-50">
+        <main className="flex-1 overflow-y-auto bg-gray-50 md:rounded-tl-2xl border-t border-l border-transparent md:border-gray-200">
           {/* Mobile Overlay for when sidebar is open */}
           {sidebarOpen && (
             <div 
@@ -27,7 +27,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             />
           )}
           
-          <div className="mx-auto max-w-7xl w-full p-4 md:p-6 lg:p-8 animate-in fade-in duration-500">
+          <div className="mx-auto max-w-5xl w-full p-4 md:p-6 lg:p-8 animate-in fade-in duration-500">
             {children}
           </div>
         </main>

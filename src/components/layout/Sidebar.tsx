@@ -1,91 +1,89 @@
 "use client";
 
-import { Home, Compass, Plus, Crown, Settings, BookOpen } from "lucide-react";
+import { Home, Compass, Plus, Crown, Flame, BookOpen, MessageSquare, ChevronDown, Rocket, Hexagon, Star, Users } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
 interface SidebarProps {
   isOpen: boolean;
 }
 
 export default function Sidebar({ isOpen }: SidebarProps) {
-  // Mobile: sidebar is hidden when closed, Desktop: always visible but maybe thin.
-  // Actually, standard Discord design is just a permanent thin bar on the left.
-  // We'll make it 72px wide, Discord style.
-
-  const guilds = [
-    { id: 1, name: "Fantasy Realm", initials: "FR", color: "bg-blue-500", image: null },
-    { id: 2, name: "Romance Club", initials: "RC", color: "bg-pink-500", image: null },
-    { id: 3, name: "Action Heroes", initials: "AH", color: "bg-red-500", image: null },
-  ];
+  // Styles inspired by modern feed apps (like Reddit) but cleaner/unique.
+  // We use a wider sidebar with distinct sections.
 
   return (
     <aside 
       className={`
-        fixed inset-y-0 left-0 z-30 flex flex-col items-center py-3 w-[72px] 
-        bg-[#e3e5e8] border-r border-gray-200 
+        fixed inset-y-0 left-0 z-30 flex flex-col w-64
+        bg-[#fdfdfd] border-r border-gray-200 
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
-        md:translate-x-0 md:static md:flex
+        md:translate-x-0
       `}
     >
-      {/* Top action (Home/Main DB) */}
-      <div className="w-full flex justify-center mb-2">
-        <div className="group relative flex items-center justify-center">
-          {/* Active indicator pill (Discord style) */}
-          <div className="absolute left-0 w-1 bg-foreground rounded-r-full transition-all h-8 opacity-0 group-hover:opacity-100" />
-          
-          <Link href="/" className="w-12 h-12 rounded-[24px] hover:rounded-[16px] bg-white text-foreground flex items-center justify-center transition-all duration-200 shadow-sm group-hover:bg-primary group-hover:text-black">
-            <Home className="w-6 h-6" />
+      <div className="flex-1 overflow-y-auto py-4 px-3 custom-scrollbar">
+        
+        {/* Main Navigation */}
+        <div className="space-y-1 mb-8">
+          <Link href="/" className="flex items-center gap-3 px-3 py-2 rounded-lg bg-yellow-50 text-yellow-900 font-semibold group">
+            <BookOpen className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+            Home Selection
+          </Link>
+          <Link href="/community" className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 font-medium transition-colors">
+            <Users className="w-5 h-5 text-blue-500" />
+            Community Feed
+          </Link>
+          <Link href="/popular" className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 font-medium transition-colors">
+            <Flame className="w-5 h-5 text-orange-500" />
+            Hot Debates
           </Link>
         </div>
-      </div>
 
-      <div className="w-8 h-[2px] bg-gray-300 rounded-full mx-auto mb-2" />
-
-      {/* Guild Server List */}
-      <div className="flex-1 w-full flex flex-col items-center gap-2 overflow-y-auto no-scrollbar py-2">
-        {guilds.map((guild) => (
-          <div key={guild.id} className="group relative flex items-center justify-center w-full">
-            <div className="absolute left-0 w-1 bg-foreground rounded-r-full transition-all h-2 opacity-0 group-hover:opacity-100 group-hover:h-5 " />
-            
-            <button className={`w-12 h-12 rounded-[24px] hover:rounded-[16px] ${guild.color} text-white font-bold text-sm flex items-center justify-center transition-all duration-200 shadow-sm shadow-blue-500/20`}>
-              {guild.initials}
-            </button>
-            <div className="absolute left-full ml-4 px-2 py-1 bg-black text-white text-xs font-bold rounded opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all pointer-events-none whitespace-nowrap z-50 origin-left">
-              {guild.name}
-              {/* Tooltip arrow */}
-              <div className="absolute top-1/2 -left-1 -mt-1 w-2 h-2 bg-black rotate-45" />
-            </div>
+        {/* Thematic Hubs (Genres) */}
+        <div className="mb-8">
+          <div className="px-3 mb-2 flex items-center justify-between text-xs font-bold text-gray-400 uppercase tracking-wider">
+            <span>Themes & Genres</span>
+            <ChevronDown className="w-4 h-4" />
           </div>
-        ))}
+          <div className="space-y-1">
+            {['Action & Shonen', 'Romance', 'Fantasy World', 'Sci-Fi & Cyberpunk', 'Thriller'].map((genre) => (
+              <Link key={genre} href={`/t/${genre.toLowerCase().replace(/ /g, '-')}`} className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors">
+                <Hexagon className="w-4 h-4 text-gray-400" />
+                <span className="text-sm font-medium">{genre}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
 
-        <div className="group relative flex items-center justify-center w-full mt-1">
-          <button className="w-12 h-12 rounded-[24px] hover:rounded-[16px] bg-white text-green-500 hover:bg-green-500 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm border border-dashed border-gray-300 hover:border-transparent">
-            <Plus className="w-6 h-6" />
-          </button>
-          <div className="absolute left-full ml-4 px-2 py-1 bg-black text-white text-xs font-bold rounded opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all pointer-events-none whitespace-nowrap z-50 origin-left">
-            Discover servers
+        {/* Specific Series / Guilds */}
+        <div className="mb-8">
+          <div className="px-3 mb-2 flex items-center justify-between text-xs font-bold text-gray-400 uppercase tracking-wider">
+            <span>Series Communities</span>
+            <Plus className="w-4 h-4 cursor-pointer hover:text-gray-800" />
+          </div>
+          <div className="space-y-1">
+            {[
+              { name: "The Golden Iris", icon: "👁️" }, 
+              { name: "Midnight Espresso", icon: "☕" },
+              { name: "Solo Leveling", icon: "🗡️" }
+            ].map((series) => (
+              <Link key={series.name} href={`/s/${series.name.toLowerCase().replace(/ /g, '-')}`} className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors">
+                <span className="text-base">{series.icon}</span>
+                <span className="text-sm font-medium">{series.name}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Bottom actions (Premium, Settings) */}
-      <div className="w-full flex flex-col items-center gap-2 mt-auto pt-2">
-        <div className="w-8 h-[2px] bg-gray-300 rounded-full mx-auto" />
-        
-        <div className="group relative flex items-center justify-center w-full mt-2">
-          <button className="w-12 h-12 rounded-[24px] hover:rounded-[16px] bg-primary text-black flex items-center justify-center transition-all duration-200 shadow-md shadow-yellow-500/30 hover:scale-105">
-            <Crown className="w-6 h-6 fill-current opacity-80" />
-          </button>
-          <div className="absolute left-full ml-4 px-2 py-1 bg-black text-white text-xs font-bold rounded opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all pointer-events-none whitespace-nowrap z-50 origin-left flex items-center gap-1">
-             <span className="text-primary">✦</span> Premium
-          </div>
-        </div>
-
-        <div className="group relative flex items-center justify-center w-full mb-2">
-          <button className="w-12 h-12 rounded-[24px] hover:rounded-[16px] bg-transparent text-gray-500 hover:bg-gray-200 flex items-center justify-center transition-all duration-200">
-            <Settings className="w-6 h-6" />
+      {/* Upgrade Action */}
+      <div className="p-4 border-t border-gray-200 bg-gray-50 mt-auto">
+        <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border border-yellow-200 rounded-xl p-4 text-center">
+          <Crown className="w-8 h-8 text-primary mx-auto mb-2" />
+          <h4 className="font-bold text-gray-900 text-sm mb-1">Yellow Eye Premium</h4>
+          <p className="text-xs text-gray-600 mb-3">Support creators & unlock exclusive discussions.</p>
+          <button className="w-full bg-primary hover:bg-primary-hover text-black font-semibold text-sm py-2 rounded-lg transition-colors shadow-sm">
+            Upgrade Now
           </button>
         </div>
       </div>
