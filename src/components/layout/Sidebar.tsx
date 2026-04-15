@@ -1,6 +1,6 @@
 "use client";
 
-import { Plus, Crown, Flame, BookOpen, ChevronDown, Users, Zap, Heart, Sparkles, Cpu, Ghost, Eye, Coffee, Sword } from "lucide-react";
+import { Plus, Crown, Library, BookOpen, ChevronDown, Users, Zap, Heart, Sparkles, Cpu, Ghost, Eye, Coffee, Sword } from "lucide-react";
 import { usePathname } from "next/navigation";
 import SidebarItem from "@/components/ui/SidebarItem";
 import Link from "next/link";
@@ -15,7 +15,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
   const navLinks = [
     { href: "/", label: "Lecture", icon: BookOpen, color: "#FFD700", textClass: "text-primary" },
     { href: "/community", label: "Communauté", icon: Users, color: "#3b82f6", textClass: "text-blue-500" },
-    { href: "/popular", label: "Gros débats", icon: Flame, color: "#f97316", textClass: "text-orange-500" },
+    { href: "/library", label: "Bibliothèque", icon: Library, color: "#10b981", textClass: "text-emerald-500" },
   ];
 
   const genres = [

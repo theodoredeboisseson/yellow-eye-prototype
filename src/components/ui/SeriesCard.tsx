@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image';
+import { Star } from 'lucide-react';
 
 interface SeriesCardProps {
   id: number;
@@ -11,9 +12,10 @@ interface SeriesCardProps {
   rank?: number;
   members?: string;
   isCompact?: boolean;
+  userRating?: number;
 }
 
-const SeriesCard = ({ title, author, tag, imageUrl, members, isCompact }: SeriesCardProps) => {
+const SeriesCard = ({ title, author, tag, imageUrl, members, isCompact, userRating }: SeriesCardProps) => {
   if (isCompact) {
     return (
       <div className="flex items-center justify-between group cursor-pointer">
@@ -61,6 +63,14 @@ const SeriesCard = ({ title, author, tag, imageUrl, members, isCompact }: Series
             {tag}
           </span>
         </div>
+
+        {/* User Rating Badge (Letterboxd style) */}
+        {userRating !== undefined && (
+          <div className="absolute bottom-2 right-2 z-20 flex items-center gap-1 bg-black/70 backdrop-blur-md px-2 py-1 rounded-md border border-white/10 text-primary">
+            <Star className="w-3 h-3 fill-current" />
+            <span className="text-xs font-bold leading-none">{userRating}</span>
+          </div>
+        )}
       </div>
       <h3 className="font-bold text-base text-foreground group-hover:text-primary transition-colors leading-tight">
         {title}
