@@ -1,5 +1,4 @@
 import { TrendingUp, Clock, BookOpen, Star, Users, MessageSquare } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -15,8 +14,8 @@ export default function Home() {
   return (
     <div className="space-y-8 pb-12">
       {/* Hero Banner */}
-      <section className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-lg group bg-neutral-900">
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-900 via-neutral-900/80 to-transparent z-10" />
+      <section className="relative w-full h-100 md:h-125 rounded-2xl overflow-hidden shadow-lg group bg-neutral-900">
+        <div className="absolute inset-0 bg-linear-to-r from-neutral-900 via-neutral-900/80 to-transparent z-10" />
         <div className="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1626544827763-d516dce335e2?q=80&w=2067&auto=format&fit=crop')] bg-cover bg-center" />
         
         <div className="absolute inset-0 z-20 flex flex-col justify-center p-8 md:p-12 w-full md:w-2/3">
@@ -82,15 +81,15 @@ export default function Home() {
         <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
           {featuredSeries.map((series) => (
             <div key={series.id} className="group cursor-pointer">
-              <div className="aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden mb-3 relative">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 flex flex-col justify-end p-3">
+              <div className="aspect-3/4 bg-gray-200 rounded-xl overflow-hidden mb-3 relative">
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 flex flex-col justify-end p-3">
                   <span className="text-white text-xs font-bold mb-2">98.5k Readers</span>
                   <button className="w-full py-1.5 bg-primary text-black text-sm font-bold rounded-lg transform translate-y-4 group-hover:translate-y-0 transition-all shadow-sm">
                     Read
                   </button>
                 </div>
                 {/* Placeholder gradient for covers since we don't have images */}
-                <div className="w-full h-full bg-gradient-to-br from-neutral-200 to-neutral-400 group-hover:scale-105 transition-transform duration-500" />
+                <div className="w-full h-full bg-linear-to-br from-neutral-200 to-neutral-400 group-hover:scale-105 transition-transform duration-500" />
               </div>
               <h3 className="font-bold text-base text-foreground group-hover:text-primary transition-colors leading-tight">
                 {series.title}

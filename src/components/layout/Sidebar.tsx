@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, Compass, Plus, Crown, Flame, BookOpen, MessageSquare, ChevronDown, Rocket, Hexagon, Star, Users } from "lucide-react";
+import { Plus, Crown, Flame, BookOpen, ChevronDown, Hexagon, Users } from "lucide-react";
 import Link from "next/link";
 
 interface SidebarProps {
@@ -78,7 +78,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
 
       {/* Upgrade Action */}
       <div className="p-4 border-t border-gray-200 bg-gray-50 mt-auto">
-        <div className="bg-gradient-to-br from-yellow-50 to-orange-50 border border-yellow-200 rounded-xl p-4 text-center">
+        <div className="bg-linear-to-br from-yellow-50 to-orange-50 border border-yellow-200 rounded-xl p-4 text-center">
           <Crown className="w-8 h-8 text-primary mx-auto mb-2" />
           <h4 className="font-bold text-gray-900 text-sm mb-1">Yellow Eye Premium</h4>
           <p className="text-xs text-gray-600 mb-3">Support creators & unlock exclusive discussions.</p>
