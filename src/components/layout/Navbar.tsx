@@ -59,11 +59,13 @@ export default function Navbar({ toggleSidebar }: NavbarProps) {
         </button>
 
         <button className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-100 transition-colors">
-          <div className="w-8 h-8 rounded-full bg-linear-to-tr from-primary to-orange-400 overflow-hidden border-2 border-transparent">
-            {/* Fallback avatar if no image */}
-            <div className="w-full h-full bg-gray-200 flex items-center justify-center text-xs font-medium text-gray-600">
-              U
-            </div>
+          <div className="w-8 h-8 rounded-full bg-linear-to-tr from-primary to-orange-400 overflow-hidden border-2 border-transparent relative">
+            <Image
+              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
+              alt="User Avatar"
+              fill
+              className="object-cover"
+            />
           </div>
         </button>
       </div>

@@ -1,27 +1,24 @@
 "use client";
 
-import { useState } from "react";
 import { Clock, Star, Users, MessageSquare, Flame } from "lucide-react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import SeriesCard from "@/components/ui/SeriesCard";
 
 export default function Home() {
-  const [activeFilter, setActiveFilter] = useState("Populaire");
-
-  const filters = [
+  const categories = [
     { name: "Populaire", icon: Flame },
-    { name: "Récents", icon: Clock },
+    { name: "Nouveau", icon: Clock },
     { name: "Premium", icon: Star },
   ];
 
   const featuredSeries = [
-    { id: 1, title: "The Sovereign's Ascent", author: "Studio YE", tag: "Fantasy" },
-    { id: 2, title: "Midnight Espresso", author: "Luna P.", tag: "Romance" },
-    { id: 3, title: "Cybernetic Drift", author: "NeoTokyo", tag: "Sci-Fi" },
-    { id: 4, title: "Solo Leveling", author: "Chugong", tag: "Action" },
-    { id: 5, title: "Omniscient Reader", author: "Sing Shong", tag: "Fantasy" },
-    { id: 6, title: "Tower of God", author: "SIU", tag: "Adventure" },
+    { id: 1, title: "The Sovereign's Ascent", author: "Studio YE", tag: "Fantasy", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
+    { id: 2, title: "Midnight Espresso", author: "Luna P.", tag: "Romance", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
+    { id: 3, title: "Cybernetic Drift", author: "NeoTokyo", tag: "Sci-Fi", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
+    { id: 4, title: "Solo Leveling", author: "Chugong", tag: "Action", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
+    { id: 5, title: "Omniscient Reader", author: "Sing Shong", tag: "Fantasy", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
+    { id: 6, title: "Tower of God", author: "SIU", tag: "Adventure", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
   ];
 
   return (
@@ -69,47 +66,33 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Quick Nav / Filters - Simplified & Restored Yellow Icons */}
-      <nav className="flex gap-4 pb-2 px-2">
-          {filters.map((filter) => {
-            const Icon = filter.icon;
-            const isActive = activeFilter === filter.name;
-            return (
-              <Button
-                key={filter.name}
-                variant={isActive ? "dark" : "secondary"}
-                isActive={isActive}
-                onClick={() => setActiveFilter(filter.name)}
-                className="gap-2 whitespace-nowrap transition-all duration-300 hover:-translate-y-3 hover:shadow-xl shadow-md"
-              >
-                <Icon 
-                  className="w-4 h-4 text-primary" 
-                  fill={isActive ? "#FFD700" : "none"} 
-                  fillOpacity={0.3} 
-                /> 
-                {filter.name}
-              </Button>
-            );
-          })}
-        </nav>
+      {/* Catégories de séries (Grilles multiples au lieu de filtres) */}
+      <div className="space-y-12">
+        {categories.map((category, index) => {
+          const Icon = category.icon;
+          // Variation factice de l'ordre pour la démo
+          const displaySeries = index === 1 ? [...featuredSeries].reverse() : index === 2 ? featuredSeries.slice(0, 4) : featuredSeries;
 
-      {/* Trending Series */}
-      <section>
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-            Séries tendances <Flame className="text-primary w-6 h-6" />
-          </h2>
-          <Button variant="ghost" size="sm" className="font-semibold text-gray-500 hover:text-black">
-            Voir toutes les séries
-          </Button>
-        </div>
+          return (
+            <section key={category.name}>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+                   {category.name} <Icon className="text-primary w-6 h-6" />
+                </h2>
+                <Button variant="ghost" size="sm" className="font-semibold text-gray-500 hover:text-black">
+                  Voir tout
+                </Button>
+              </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
-          {featuredSeries.map((series) => (
-            <SeriesCard key={series.id} {...series} />
-          ))}
-        </div>
-      </section>
+              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
+                {displaySeries.map((series) => (
+                  <SeriesCard key={`${category.name}-${series.id}`} {...series} />
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
 
       {/* Promotion Block */}
       <section className="bg-neutral-900 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between shadow-lg relative overflow-hidden mt-8">

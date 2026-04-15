@@ -1,8 +1,9 @@
 "use client";
 
-import { Plus, Crown, Flame, BookOpen, ChevronDown, Hexagon, Users } from "lucide-react";
-import Link from "next/link";
+import { Plus, Crown, Flame, BookOpen, ChevronDown, Users, Zap, Heart, Sparkles, Cpu, Ghost, Eye, Coffee, Sword } from "lucide-react";
 import { usePathname } from "next/navigation";
+import SidebarItem from "@/components/ui/SidebarItem";
+import Link from "next/link";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -15,6 +16,20 @@ export default function Sidebar({ isOpen }: SidebarProps) {
     { href: "/", label: "Lecture", icon: BookOpen, color: "#FFD700", textClass: "text-primary" },
     { href: "/community", label: "Communauté", icon: Users, color: "#3b82f6", textClass: "text-blue-500" },
     { href: "/popular", label: "Gros débats", icon: Flame, color: "#f97316", textClass: "text-orange-500" },
+  ];
+
+  const genres = [
+    { name: 'Action & Shonen', icon: Zap, color: 'text-orange-500' },
+    { name: 'Romance', icon: Heart, color: 'text-pink-500' },
+    { name: 'Fantasy World', icon: Sparkles, color: 'text-purple-500' },
+    { name: 'Sci-Fi & Cyberpunk', icon: Cpu, color: 'text-cyan-500' },
+    { name: 'Thriller', icon: Ghost, color: 'text-foreground' },
+  ];
+
+  const series = [
+    { name: "The Golden Iris", icon: Eye, color: "text-amber-500" },
+    { name: "Midnight Espresso", icon: Coffee, color: "text-amber-900" },
+    { name: "Solo Leveling", icon: Sword, color: "text-blue-600" }
   ];
 
   return (
@@ -35,19 +50,19 @@ export default function Sidebar({ isOpen }: SidebarProps) {
             const Icon = link.icon;
             const isActive = pathname === link.href;
             return (
-              <Link 
-                key={link.href} 
-                href={link.href} 
+              <Link
+                key={link.href}
+                href={link.href}
                 className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 ${
                   isActive 
                     ? "ye-active" 
                     : "text-gray-700 hover:bg-gray-100 font-medium"
                 }`}
               >
-                <Icon 
-                  className={`w-5 h-5 ${link.textClass}`} 
-                  fill={isActive ? link.color : "none"} 
-                  fillOpacity={0.3} 
+                <Icon
+                  className={`w-5 h-5 ${link.textClass}`}
+                  fill={isActive ? link.color : "none"}
+                  fillOpacity={0.3}
                 />
                 {link.label}
               </Link>
@@ -62,11 +77,15 @@ export default function Sidebar({ isOpen }: SidebarProps) {
             <ChevronDown className="w-4 h-4" />
           </div>
           <div className="space-y-1">
-            {['Action & Shonen', 'Romance', 'Fantasy World', 'Sci-Fi & Cyberpunk', 'Thriller'].map((genre) => (
-              <Link key={genre} href={`/t/${genre.toLowerCase().replace(/ /g, '-')}`} className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors">
-                <Hexagon className="w-4 h-4 text-gray-400" />
-                <span className="text-sm font-medium">{genre}</span>
-              </Link>
+            {genres.map((genre) => (
+              <SidebarItem
+                key={genre.name}
+                href={`/t/${genre.name.toLowerCase().replace(/ /g, '-')}`}
+                label={genre.name}
+                icon={genre.icon}
+                iconClassName={genre.color}
+                variant="sub"
+              />
             ))}
           </div>
         </div>
@@ -78,15 +97,15 @@ export default function Sidebar({ isOpen }: SidebarProps) {
             <Plus className="w-4 h-4 cursor-pointer hover:text-gray-800" />
           </div>
           <div className="space-y-1">
-            {[
-              { name: "The Golden Iris", icon: "👁️" },
-              { name: "Midnight Espresso", icon: "☕" },
-              { name: "Solo Leveling", icon: "🗡️" }
-            ].map((series) => (
-              <Link key={series.name} href={`/s/${series.name.toLowerCase().replace(/ /g, '-')}`} className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors">
-                <span className="text-base">{series.icon}</span>
-                <span className="text-sm font-medium">{series.name}</span>
-              </Link>
+            {series.map((item) => (
+              <SidebarItem
+                key={item.name}
+                href={`/s/${item.name.toLowerCase().replace(/ /g, '-')}`}
+                label={item.name}
+                icon={item.icon}
+                iconClassName={item.color}
+                variant="sub"
+              />
             ))}
           </div>
         </div>
