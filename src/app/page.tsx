@@ -1,5 +1,7 @@
 import { TrendingUp, Clock, BookOpen, Star, Users, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import Button from "@/components/ui/Button";
+import SeriesCard from "@/components/ui/SeriesCard";
 
 export default function Home() {
   const featuredSeries = [
@@ -19,7 +21,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1626544827763-d516dce335e2?q=80&w=2067&auto=format&fit=crop')] bg-cover bg-center" />
         
         <div className="absolute inset-0 z-20 flex flex-col justify-center p-8 md:p-12 w-full md:w-2/3">
-          <span className="px-3 py-1 bg-primary text-black text-xs font-bold uppercase tracking-wider rounded-full w-fit mb-4">
+          <span className="ye-tag ye-tag-primary w-fit mb-4">
             Exclusive Release
           </span>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
@@ -29,27 +31,27 @@ export default function Home() {
             In a world where secrets are currency, she possesses the only eyes that can see the truth. Discover the most anticipated webtoon of the year.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="px-6 py-3 bg-primary hover:bg-primary-hover text-black font-bold rounded-full transition-transform hover:scale-105 shadow-[0_0_15px_rgba(255,215,0,0.4)]">
+            <Button variant="primary" size="lg" className="shadow-[0_0_15px_rgba(255,215,0,0.4)] hover:scale-105">
               Read Chapter 1
-            </button>
-            <button className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm font-semibold rounded-full border border-white/20 transition-colors">
+            </Button>
+            <Button variant="ghost" size="lg" className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm border border-white/20">
               Add to Library
-            </button>
+            </Button>
           </div>
         </div>
       </section>
 
       {/* Quick Nav / Filters */}
       <nav className="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
-        <button className="flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full whitespace-nowrap font-medium transition-transform shadow-md hover:-translate-y-1">
+        <Button variant="dark" className="gap-2 whitespace-nowrap ye-hover-up shadow-md">
           <TrendingUp className="w-4 h-4 text-primary" /> Popular
-        </button>
-        <button className="flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 text-gray-700 rounded-full whitespace-nowrap font-medium transition-colors hover:border-primary">
+        </Button>
+        <Button variant="secondary" className="gap-2 whitespace-nowrap ye-hover-up">
           <Clock className="w-4 h-4 text-gray-500" /> Recent
-        </button>
-        <button className="flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 text-gray-700 rounded-full whitespace-nowrap font-medium transition-colors hover:border-primary">
+        </Button>
+        <Button variant="secondary" className="gap-2 whitespace-nowrap ye-hover-up">
           <Star className="w-4 h-4 text-gray-500" /> Premium
-        </button>
+        </Button>
       </nav>
 
       {/* Community Callout Section */}
@@ -62,8 +64,10 @@ export default function Home() {
             Share theories, debate character arcs, and connect with other readers on our community hub.
           </p>
         </div>
-        <Link href="/community" className="z-10 shrink-0 bg-white border border-yellow-300 hover:border-primary text-yellow-900 px-6 py-2.5 rounded-xl font-bold shadow-sm transition-colors flex items-center gap-2">
-          <MessageSquare className="w-4 h-4" /> Go to Community Feed
+        <Link href="/community" passHref>
+          <Button variant="secondary" className="z-10 gap-2 border-yellow-300 hover:border-primary text-yellow-900">
+            <MessageSquare className="w-4 h-4" /> Go to Community Feed
+          </Button>
         </Link>
       </section>
 
@@ -73,29 +77,14 @@ export default function Home() {
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             Must Read Series <BookOpen className="text-primary w-6 h-6" />
           </h2>
-          <button className="text-sm font-semibold text-gray-500 hover:text-black transition-colors">
+          <Button variant="ghost" size="sm" className="font-semibold text-gray-500 hover:text-black">
             View All Series
-          </button>
+          </Button>
         </div>
         
         <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
           {featuredSeries.map((series) => (
-            <div key={series.id} className="group cursor-pointer">
-              <div className="aspect-3/4 bg-gray-200 rounded-xl overflow-hidden mb-3 relative">
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 flex flex-col justify-end p-3">
-                  <span className="text-white text-xs font-bold mb-2">98.5k Readers</span>
-                  <button className="w-full py-1.5 bg-primary text-black text-sm font-bold rounded-lg transform translate-y-4 group-hover:translate-y-0 transition-all shadow-sm">
-                    Read
-                  </button>
-                </div>
-                {/* Placeholder gradient for covers since we don't have images */}
-                <div className="w-full h-full bg-linear-to-br from-neutral-200 to-neutral-400 group-hover:scale-105 transition-transform duration-500" />
-              </div>
-              <h3 className="font-bold text-base text-foreground group-hover:text-primary transition-colors leading-tight">
-                {series.title}
-              </h3>
-              <p className="text-xs text-gray-500 mt-1">{series.author}</p>
-            </div>
+            <SeriesCard key={series.id} {...series} />
           ))}
         </div>
       </section>
@@ -112,10 +101,10 @@ export default function Home() {
           </p>
         </div>
         <div className="z-10 shrink-0">
-          <button className="bg-primary hover:bg-primary-hover text-black px-8 py-4 rounded-xl font-bold text-lg shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:scale-105 transition-transform flex items-center gap-2">
+          <Button variant="primary" size="lg" className="shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:scale-105 gap-2">
             <Star className="fill-current w-5 h-5" />
             Get Premium
-          </button>
+          </Button>
         </div>
       </section>
     </div>

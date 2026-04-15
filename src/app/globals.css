@@ -42,6 +42,22 @@ body {
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+@utility ye-card {
+  @apply bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm transition-colors hover:border-gray-300;
+}
+
+@utility ye-tag {
+  @apply inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-gray-100 text-gray-600 rounded;
+}
+
+@utility ye-tag-primary {
+  @apply bg-primary/10 text-yellow-700;
+}
+
+@utility ye-input {
+  @apply bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 transition-all focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary focus:bg-white;
+}
+
+@utility ye-hover-up {
+  @apply transition-transform hover:-translate-y-1;
 }
