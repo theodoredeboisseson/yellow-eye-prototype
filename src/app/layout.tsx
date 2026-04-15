@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yellow Eye | Webtoons & Discussions",
+  title: "YellowEye | Webtoons & Discussions",
   description: "Lisez des webtoons premium et rejoignez des communautés de lecture.",
 };
 

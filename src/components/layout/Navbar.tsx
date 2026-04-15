@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, Search, Bell } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 interface NavbarProps {
@@ -12,20 +13,26 @@ export default function Navbar({ toggleSidebar }: NavbarProps) {
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 sticky top-0 z-20 shadow-sm transition-colors duration-200">
       {/* Left section: Hamburger / Logo */}
       <div className="flex items-center gap-3">
-        <button 
+        <button
           onClick={toggleSidebar}
           className="p-2 -ml-2 rounded-md text-gray-500 hover:bg-gray-100 transition-colors"
           aria-label="Toggle Sidebar"
         >
-          <Menu className="w-5 h-5" />
+          <Menu className="size-5" />
         </button>
-        
+
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-black font-bold shadow-sm transition-transform group-hover:scale-105">
-            YE
+          <div className="relative size-10 transition-transform group-hover:scale-105">
+            <Image
+              src="/logo.svg"
+              alt="Yellow Eye Logo"
+              fill
+              className="object-contain rounded"
+              priority
+            />
           </div>
           <span className="font-bold text-lg hidden sm:block tracking-tight text-foreground">
-            Yellow Eye
+            YellowEye
           </span>
         </Link>
       </div>
@@ -39,7 +46,7 @@ export default function Navbar({ toggleSidebar }: NavbarProps) {
           <input
             type="text"
             className="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-full leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200 sm:text-sm"
-            placeholder="Rechercher des webtoons, créateurs..."
+            placeholder="Rechercher des webtoons, créateurs, posts..."
           />
         </div>
       </div>
@@ -50,7 +57,7 @@ export default function Navbar({ toggleSidebar }: NavbarProps) {
           <Bell className="w-5 h-5" />
           <span className="absolute top-1.5 right-1.5 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
         </button>
-        
+
         <button className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-100 transition-colors">
           <div className="w-8 h-8 rounded-full bg-linear-to-tr from-primary to-orange-400 overflow-hidden border-2 border-transparent">
             {/* Fallback avatar if no image */}

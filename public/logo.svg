@@ -1,0 +1,15 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Glowing Yellow Background/App Icon Base -->
+  <rect width="512" height="512" rx="112" fill="#FFD700"/>
+  
+  <!-- Sclera (White Eye Shape) -->
+  <path d="M256 130C100 130 30 256 16 256C30 256 100 382 256 382C412 382 482 256 496 256C482 256 412 130 256 130Z" fill="white" stroke="#171717" stroke-width="24" stroke-linejoin="round"/>
+  
+  <!-- Iris as a Speech Bubble -->
+  <path d="M256 168C207.4 168 168 207.4 168 256C168 274.3 173.6 291.3 183.1 305L150 356L205.8 328C220.6 336.5 237.7 344 256 344C304.6 344 344 304.6 344 256C344 207.4 304.6 168 256 168Z" fill="#FFD700" stroke="#171717" stroke-width="12" stroke-linejoin="round"/>
+  
+  <!-- 3 Dots for Community/Discussion -->
+  <circle cx="200" cy="256" r="12" fill="#171717"/>
+  <circle cx="256" cy="256" r="12" fill="#171717"/>
+  <circle cx="312" cy="256" r="12" fill="#171717"/>
+</svg>

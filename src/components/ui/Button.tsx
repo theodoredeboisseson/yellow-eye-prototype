@@ -4,6 +4,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'ghost' | 'dark' | 'link';
   size?: 'sm' | 'md' | 'lg' | 'icon';
   isLoading?: boolean;
+  isActive?: boolean;
 }
 
 const Button = ({
@@ -11,6 +12,7 @@ const Button = ({
   variant = 'secondary',
   size = 'md',
   isLoading,
+  isActive,
   className = '',
   ...props
 }: ButtonProps) => {

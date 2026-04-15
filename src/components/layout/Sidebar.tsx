@@ -2,14 +2,20 @@
 
 import { Plus, Crown, Flame, BookOpen, ChevronDown, Hexagon, Users } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface SidebarProps {
   isOpen: boolean;
 }
 
 export default function Sidebar({ isOpen }: SidebarProps) {
-  // Styles inspired by modern feed apps (like Reddit) but cleaner/unique.
-  // We use a wider sidebar with distinct sections.
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: "/", label: "Lecture", icon: BookOpen, color: "#FFD700", textClass: "text-primary" },
+    { href: "/community", label: "Communauté", icon: Users, color: "#3b82f6", textClass: "text-blue-500" },
+    { href: "/popular", label: "Gros débats", icon: Flame, color: "#f97316", textClass: "text-orange-500" },
+  ];
 
   return (
     <aside
@@ -23,20 +29,30 @@ export default function Sidebar({ isOpen }: SidebarProps) {
     >
       <div className="flex-1 overflow-y-auto py-4 px-3 custom-scrollbar">
 
-        {/* Main Navigation */}
+        {/* Simplified Main Navigation */}
         <div className="space-y-1 mb-8">
-          <Link href="/" className="flex items-center gap-3 px-3 py-2 rounded-lg bg-yellow-50 text-yellow-900 font-semibold group">
-            <BookOpen className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-            Lecture
-          </Link>
-          <Link href="/community" className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 font-medium transition-colors">
-            <Users className="w-5 h-5 text-blue-500" />
-            Communauté
-          </Link>
-          <Link href="/popular" className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 font-medium transition-colors">
-            <Flame className="w-5 h-5 text-orange-500" />
-            Gros débats
-          </Link>
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            const isActive = pathname === link.href;
+            return (
+              <Link 
+                key={link.href} 
+                href={link.href} 
+                className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 ${
+                  isActive 
+                    ? "ye-active" 
+                    : "text-gray-700 hover:bg-gray-100 font-medium"
+                }`}
+              >
+                <Icon 
+                  className={`w-5 h-5 ${link.textClass}`} 
+                  fill={isActive ? link.color : "none"} 
+                  fillOpacity={0.3} 
+                />
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Thematic Hubs (Genres) */}
@@ -80,10 +96,10 @@ export default function Sidebar({ isOpen }: SidebarProps) {
       <div className="p-4 border-t border-gray-200 bg-gray-50 mt-auto">
         <div className="bg-linear-to-br from-yellow-50 to-orange-50 border border-yellow-200 rounded-xl p-4 text-center">
           <Crown className="w-8 h-8 text-primary mx-auto mb-2" />
-          <h4 className="font-bold text-gray-900 text-sm mb-1">Yellow Eye Premium</h4>
+          <h4 className="font-bold text-gray-900 text-sm mb-1">YellowEye Premium</h4>
           <p className="text-xs text-gray-600 mb-3">Soutenez les créateurs & débloquez des discussions exclusives.</p>
           <button className="w-full bg-primary hover:bg-primary-hover text-black font-semibold text-sm py-2 rounded-lg transition-colors shadow-sm">
-            S'abonner maintenant
+            S&#39;abonner maintenant
           </button>
         </div>
       </div>

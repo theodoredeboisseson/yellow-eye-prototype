@@ -1,9 +1,20 @@
-import { TrendingUp, Clock, BookOpen, Star, Users, MessageSquare, Flame } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Clock, Star, Users, MessageSquare, Flame } from "lucide-react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import SeriesCard from "@/components/ui/SeriesCard";
 
 export default function Home() {
+  const [activeFilter, setActiveFilter] = useState("Populaire");
+
+  const filters = [
+    { name: "Populaire", icon: Flame },
+    { name: "Récents", icon: Clock },
+    { name: "Premium", icon: Star },
+  ];
+
   const featuredSeries = [
     { id: 1, title: "The Sovereign's Ascent", author: "Studio YE", tag: "Fantasy" },
     { id: 2, title: "Midnight Espresso", author: "Luna P.", tag: "Romance" },
@@ -28,7 +39,7 @@ export default function Home() {
             The Golden Iris
           </h1>
           <p className="text-gray-300 text-base md:text-lg mb-8 max-w-xl">
-            Dans un monde où les secrets sont une monnaie d'échange, elle possède les seuls yeux capables de voir la vérité. Découvrez le webtoon le plus attendu de l'année.
+            Dans un monde où les secrets sont une monnaie d&#39;échange, elle possède les seuls yeux capables de voir la vérité. Découvrez le webtoon le plus attendu de l&#39;année.
           </p>
           <div className="flex flex-wrap gap-4">
             <Button variant="primary" size="lg" className="shadow-[0_0_15px_rgba(255,215,0,0.4)] hover:scale-105">
@@ -41,19 +52,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Nav / Filters */}
-      <nav className="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
-        <Button variant="dark" className="gap-2 whitespace-nowrap ye-hover-up shadow-md">
-          <TrendingUp className="w-4 h-4 text-primary" /> Populaire
-        </Button>
-        <Button variant="secondary" className="gap-2 whitespace-nowrap ye-hover-up">
-          <Clock className="w-4 h-4 text-gray-500" /> Récents
-        </Button>
-        <Button variant="secondary" className="gap-2 whitespace-nowrap ye-hover-up">
-          <Star className="w-4 h-4 text-gray-500" /> Premium
-        </Button>
-      </nav>
-
       {/* Community Callout Section */}
       <section className="bg-yellow-50 border border-yellow-200 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between shadow-sm relative overflow-hidden">
         <div className="z-10 mb-4 md:mb-0">
@@ -61,7 +59,7 @@ export default function Home() {
             <Users className="w-5 h-5 text-primary" /> Rejoignez le mouvement
           </h2>
           <p className="text-sm text-yellow-800">
-            Partagez vos théories, débattez des arcs narratifs et connectez-vous avec d'autres lecteurs sur notre hub communautaire.
+            Partagez vos théories, débattez des arcs narratifs et connectez-vous avec d&#39;autres lecteurs sur notre hub communautaire.
           </p>
         </div>
         <Link href="/community" passHref>
@@ -70,6 +68,30 @@ export default function Home() {
           </Button>
         </Link>
       </section>
+
+      {/* Quick Nav / Filters - Simplified & Restored Yellow Icons */}
+      <nav className="flex gap-4 pb-2 px-2">
+          {filters.map((filter) => {
+            const Icon = filter.icon;
+            const isActive = activeFilter === filter.name;
+            return (
+              <Button
+                key={filter.name}
+                variant={isActive ? "dark" : "secondary"}
+                isActive={isActive}
+                onClick={() => setActiveFilter(filter.name)}
+                className="gap-2 whitespace-nowrap transition-all duration-300 hover:-translate-y-3 hover:shadow-xl shadow-md"
+              >
+                <Icon 
+                  className="w-4 h-4 text-primary" 
+                  fill={isActive ? "#FFD700" : "none"} 
+                  fillOpacity={0.3} 
+                /> 
+                {filter.name}
+              </Button>
+            );
+          })}
+        </nav>
 
       {/* Trending Series */}
       <section>
@@ -97,7 +119,7 @@ export default function Home() {
             Débloquez le contenu <span className="text-primary">Premium</span>
           </h2>
           <p className="text-gray-400 max-w-md">
-            Soutenez directement les créateurs, accédez aux chapitres en avant-première et bénéficiez d'avantages exclusifs dans les guildes en devenant Premium.
+            Soutenez directement les créateurs, accédez aux chapitres en avant-première et bénéficiez d&#39;avantages exclusifs dans les guildes en devenant Premium.
           </p>
         </div>
         <div className="z-10 shrink-0">
