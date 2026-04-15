@@ -20,10 +20,10 @@ const SeriesCard = ({ title, author, tag, members, isCompact }: SeriesCardProps)
           <div className="w-8 h-8 rounded bg-gray-200" />
           <div>
             <h4 className="text-sm font-bold text-gray-900 group-hover:text-primary transition-colors">{title}</h4>
-            <p className="text-xs text-gray-500">{members} readers</p>
+            <p className="text-xs text-gray-500">{members} lecteurs</p>
           </div>
         </div>
-        <button className="text-xs font-bold text-gray-400 hover:text-black transition-colors">Join</button>
+        <button className="text-xs font-bold text-gray-400 hover:text-black transition-colors">Rejoindre</button>
       </div>
     );
   }
@@ -32,9 +32,9 @@ const SeriesCard = ({ title, author, tag, members, isCompact }: SeriesCardProps)
     <div className="group cursor-pointer">
       <div className="aspect-3/4 bg-gray-200 rounded-xl overflow-hidden mb-3 relative">
         <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 flex flex-col justify-end p-3">
-          <span className="text-white text-xs font-bold mb-2">{members || "98.5k"} Readers</span>
+          <span className="text-white text-xs font-bold mb-2">{members || "98.5k"} Lecteurs</span>
           <button className="w-full py-1.5 bg-primary text-black text-sm font-bold rounded-lg transform translate-y-4 group-hover:translate-y-0 transition-all shadow-sm">
-            Read
+            Lire
           </button>
         </div>
         {/* Placeholder gradient for covers since we don't have images */}

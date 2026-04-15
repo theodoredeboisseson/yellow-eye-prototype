@@ -39,7 +39,7 @@ export default function Navbar({ toggleSidebar }: NavbarProps) {
           <input
             type="text"
             className="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-full leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200 sm:text-sm"
-            placeholder="Search webtoons, creators..."
+            placeholder="Rechercher des webtoons, créateurs..."
           />
         </div>
       </div>

@@ -36,7 +36,7 @@ const FeedPost = ({ community, author, timeAgo, title, content, upvotes, comment
         <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
           <Link href={`/${community}`} className="font-bold text-gray-900 hover:underline">{community}</Link>
           <span>•</span>
-          <span>Posted by <span className="hover:underline hover:text-gray-900">u/{author}</span></span>
+          <span>Posté par <span className="hover:underline hover:text-gray-900">u/{author}</span></span>
           <span>{timeAgo}</span>
         </div>
 
@@ -52,11 +52,11 @@ const FeedPost = ({ community, author, timeAgo, title, content, upvotes, comment
         <div className="flex items-center gap-4 text-xs font-semibold text-gray-500">
           <Button variant="ghost" size="sm" className="gap-1.5 px-2 py-1.5">
             <MessageSquare className="w-4 h-4" />
-            {comments} Comments
+            {comments} Commentaires
           </Button>
           <Button variant="ghost" size="sm" className="gap-1.5 px-2 py-1.5">
             <TrendingUp className="w-4 h-4" />
-            Share
+            Partager
           </Button>
           <Button variant="ghost" size="icon" className="ml-auto p-1.5">
             <MoreHorizontal className="w-4 h-4" />

@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yellow Eye | Webtoons & Guilds",
-  description: "Read premium webtoons and join reading guilds.",
+  title: "Yellow Eye | Webtoons & Discussions",
+  description: "Lisez des webtoons premium et rejoignez des communautés de lecture.",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="fr"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">
