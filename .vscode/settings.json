@@ -1,0 +1,16 @@
+{
+  "css.customData": [
+    ".vscode/tailwind.json"
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["ye-card", "ye-card"],
+    ["ye-tag", "ye-tag"],
+    ["ye-input", "ye-input"]
+  ]
+}
