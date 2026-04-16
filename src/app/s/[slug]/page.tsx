@@ -132,7 +132,7 @@ export default function SeriesPage({ params }: { params: Promise<{ slug: string 
                 value={reviewText}
                 onChange={(e) => setReviewText(e.target.value)}
               />
-              <Button variant="primary" className="w-full justify-center">Publier l'avis</Button>
+              <Button variant="primary" className="w-full justify-center">Publier l&#39;avis</Button>
             </div>
           </div>
         </div>
@@ -153,7 +153,13 @@ export default function SeriesPage({ params }: { params: Promise<{ slug: string 
               <div key={review.id} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <img src={review.avatar} alt={review.user} className="w-10 h-10 rounded-full object-cover" />
+                    <Image 
+                      src={review.avatar} 
+                      alt={review.user} 
+                      width={40} 
+                      height={40} 
+                      className="w-10 h-10 rounded-full object-cover" 
+                    />
                     <div>
                       <h4 className="font-bold text-gray-900 text-sm">{review.user}</h4>
                       <p className="text-xs text-gray-500">{review.date}</p>

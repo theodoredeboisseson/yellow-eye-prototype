@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Crown, Library, BookOpen, ChevronDown, Users, Zap, Heart, Sparkles, Cpu, Ghost, Eye, Coffee, Sword } from "lucide-react";
+import { Crown, Library, BookOpen, ChevronDown, Users, Zap, Heart, Sparkles, Cpu, Ghost, Eye, Coffee, Sword } from "lucide-react";
 import { usePathname } from "next/navigation";
 import SidebarItem from "@/components/ui/SidebarItem";
 import Link from "next/link";
@@ -82,7 +82,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
             <span>Thèmes & Genres</span>
             <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isGenresExpanded ? "rotate-0" : "-rotate-90"}`} />
           </button>
-          <div className={`space-y-1 overflow-hidden transition-all duration-300 ${isGenresExpanded ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
+          <div className={`space-y-1 overflow-hidden transition-all duration-300 ${isGenresExpanded ? "max-h-125 opacity-100" : "max-h-0 opacity-0"}`}>
             {genres.map((genre) => (
               <SidebarItem
                 key={genre.name}
@@ -126,9 +126,11 @@ export default function Sidebar({ isOpen }: SidebarProps) {
           <Crown className="w-8 h-8 text-primary mx-auto mb-2" />
           <h4 className="font-bold text-gray-900 text-sm mb-1">YellowEye Premium</h4>
           <p className="text-xs text-gray-600 mb-3">Soutenez les créateurs & débloquez des discussions exclusives.</p>
-          <button className="w-full bg-primary hover:bg-primary-hover text-black font-semibold text-sm py-2 rounded-lg transition-colors shadow-sm">
-            S&#39;abonner maintenant
-          </button>
+          <Link href="/premium" className="block w-full">
+            <button className="w-full bg-primary hover:bg-primary-hover text-black font-semibold text-sm py-2 rounded-lg transition-colors shadow-sm cursor-pointer">
+              S&#39;abonner maintenant
+            </button>
+          </Link>
         </div>
       </div>
     </aside>

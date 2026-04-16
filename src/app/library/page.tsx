@@ -89,7 +89,7 @@ export default function LibraryPage() {
       <section className="pt-8">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
-            Liste d'envies <BookmarkCheck className="text-gray-400 w-5 h-5" />
+            Liste d&#39;envies <BookmarkCheck className="text-gray-400 w-5 h-5" />
           </h2>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">

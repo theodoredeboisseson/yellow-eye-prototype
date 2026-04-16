@@ -30,7 +30,7 @@ export default function Home() {
             Omniscient Reader
           </h1>
           <p className="text-gray-300 text-base md:text-lg mb-8 max-w-xl">
-            "Ce roman est devenu la réalité." Dokja était un employé de bureau ordinaire dont le seul loisir était la lecture de son web novel préféré. Mais le monde devient soudainement celui de l&#39;histoire...
+            &#34;Ce roman est devenu la réalité.&#34; Dokja était un employé de bureau ordinaire dont le seul loisir était la lecture de son web novel préféré. Mais le monde devient soudainement celui de l&#39;histoire...
           </p>
           <div className="flex flex-wrap gap-4">
             <Button variant="primary" size="lg" className="shadow-[0_0_15px_rgba(255,215,0,0.4)] hover:scale-105">
@@ -100,10 +100,12 @@ export default function Home() {
           </p>
         </div>
         <div className="z-10 shrink-0">
-          <Button variant="primary" size="lg" className="shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:scale-105 gap-2">
-            <Star className="fill-current w-5 h-5" />
-            Devenir Premium
-          </Button>
+          <Link href="/premium">
+            <Button variant="primary" size="lg" className="shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:scale-105 gap-2">
+              <Star className="fill-current w-5 h-5" />
+              Devenir Premium
+            </Button>
+          </Link>
         </div>
       </section>
     </div>

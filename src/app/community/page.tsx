@@ -57,7 +57,7 @@ export default function CommunityFeed() {
         {/* Header */}
         <div>
           <h1 className="text-3xl font-extrabold text-foreground mb-2">Hub Communautaire</h1>
-          <p className="text-gray-500">Rejoignez la discussion, partagez vos théories et connectez-vous avec d'autres lecteurs.</p>
+          <p className="text-gray-500">Rejoignez la discussion, partagez vos théories et connectez-vous avec d&#39;autres lecteurs.</p>
         </div>
 
         {/* Create Post Input */}
