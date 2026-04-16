@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
@@ -14,7 +14,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       
       {/* Main Content Area */}
       <div 
-        className={`flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out md:ml-64`}
+        className={`flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out ${sidebarOpen ? "md:ml-64" : "md:ml-0"}`}
       >
         <Navbar toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
         

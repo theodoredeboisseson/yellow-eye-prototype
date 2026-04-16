@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { Menu, Search, Bell, MessageSquare, Flame, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import {ProfilePicture} from "@/components/ui/ProfilePicture";
 
 interface NavbarProps {
   toggleSidebar: () => void;
@@ -152,18 +153,7 @@ export default function Navbar({ toggleSidebar }: NavbarProps) {
         </div>
 
         <Link href="/library" className="flex items-center gap-2 p-1 rounded-xl hover:bg-gray-100 transition-all duration-300 active:scale-95">
-          <div className="w-9 h-9 rounded-xl overflow-hidden p-0.5 bg-linear-to-tr from-primary via-orange-400 to-yellow-300 shadow-md relative group/avatar">
-            <div className="w-full h-full rounded-[10px] bg-white p-px overflow-hidden">
-              <Image
-                src="/profile.png"
-                alt="User Avatar"
-                fill
-                sizes="36px"
-                className="object-cover rounded-[9px]"
-              />
-            </div>
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover/avatar:opacity-100 transition-opacity pointer-events-none" />
-          </div>
+          <ProfilePicture/>
         </Link>
       </div>
     </header>

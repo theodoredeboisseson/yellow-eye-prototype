@@ -1,10 +1,11 @@
 "use client";
 
-import { TrendingUp, Clock, Image as ImageIcon, Link as LinkIcon, Flame } from "lucide-react";
+import {Clock, Flame, Image as ImageIcon, Link as LinkIcon, TrendingUp} from "lucide-react";
 import Button from "@/components/ui/Button";
 import FeedPost from "@/components/ui/FeedPost";
 import SeriesCard from "@/components/ui/SeriesCard";
 import seriesData from "@/data/series.json";
+import {ProfilePicture} from "@/components/ui/ProfilePicture";
 
 export default function CommunityFeed() {
   const feedPosts = [
@@ -57,42 +58,43 @@ export default function CommunityFeed() {
         {/* Header */}
         <div>
           <h1 className="text-3xl font-extrabold text-foreground mb-2">Hub Communautaire</h1>
-          <p className="text-gray-500">Rejoignez la discussion, partagez vos théories et connectez-vous avec d&#39;autres lecteurs.</p>
+          <p className="text-gray-500">Rejoignez la discussion, partagez vos théories et connectez-vous avec
+            d&#39;autres lecteurs.</p>
         </div>
 
         {/* Create Post Input */}
         <div className="ye-card bg-white p-4 flex gap-3 items-center">
-          <div className="w-10 h-10 rounded-full bg-gray-200 shrink-0" />
+          <ProfilePicture/>
           <input
-            type="text"
-            placeholder="Lancez une nouvelle discussion ou une polémique..."
-            className="ye-input flex-1"
+              type="text"
+              placeholder="Lancez une nouvelle discussion ou une polémique..."
+              className="ye-input flex-1"
           />
           <Button variant="ghost" size="icon">
-            <ImageIcon className="w-5 h-5" />
+            <ImageIcon className="w-5 h-5"/>
           </Button>
           <Button variant="ghost" size="icon">
-            <LinkIcon className="w-5 h-5" />
+            <LinkIcon className="w-5 h-5"/>
           </Button>
         </div>
 
         {/* Feed Sorting */}
         <div className="ye-card bg-white p-2 flex items-center gap-2">
           <Button variant="primary" size="sm" className="gap-2 bg-yellow-50 text-yellow-900 border-none">
-            <Flame className="w-4 h-4 text-orange-500" /> Populaire
+            <Flame className="w-4 h-4 text-orange-500"/> Populaire
           </Button>
           <Button variant="ghost" size="sm" className="gap-2">
-            <Clock className="w-4 h-4" /> Nouveau
+            <Clock className="w-4 h-4"/> Nouveau
           </Button>
           <Button variant="ghost" size="sm" className="gap-2">
-            <TrendingUp className="w-4 h-4" /> Top
+            <TrendingUp className="w-4 h-4"/> Top
           </Button>
         </div>
 
         {/* Posts */}
         <div className="space-y-4">
           {feedPosts.map((post) => (
-            <FeedPost key={post.id} {...post} />
+              <FeedPost key={post.id} {...post} />
           ))}
         </div>
       </div>
@@ -105,7 +107,7 @@ export default function CommunityFeed() {
           <h3 className="font-bold text-gray-900 mb-4">Webtoons Tendances</h3>
           <div className="space-y-4">
             {trendingWebtoons.map((series) => (
-              <SeriesCard key={series.id} {...series} isCompact />
+                <SeriesCard key={series.id} {...series} isCompact/>
             ))}
           </div>
           <Button variant="secondary" className="w-full mt-4 text-primary border-primary hover:bg-yellow-50">

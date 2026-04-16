@@ -38,11 +38,10 @@ export default function Sidebar({ isOpen }: SidebarProps) {
   return (
     <aside
       className={`
-        fixed inset-y-0 left-0 z-30 flex flex-col w-64
+        fixed inset-y-0 left-0 z-40 flex flex-col w-64
         bg-[#fdfdfd] border-r border-gray-200 
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
-        md:translate-x-0
       `}
     >
       <div className="flex-1 overflow-y-auto py-4 px-3 custom-scrollbar">
