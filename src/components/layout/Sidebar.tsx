@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Plus, Crown, Library, BookOpen, ChevronDown, Users, Zap, Heart, Sparkles, Cpu, Ghost, Eye, Coffee, Sword } from "lucide-react";
 import { usePathname } from "next/navigation";
 import SidebarItem from "@/components/ui/SidebarItem";
@@ -11,6 +12,8 @@ interface SidebarProps {
 
 export default function Sidebar({ isOpen }: SidebarProps) {
   const pathname = usePathname();
+  const [isGenresExpanded, setIsGenresExpanded] = useState(true);
+  const [isSeriesExpanded, setIsSeriesExpanded] = useState(true);
 
   const navLinks = [
     { href: "/", label: "Lecture", icon: BookOpen, color: "#FFD700", textClass: "text-primary" },
@@ -71,12 +74,15 @@ export default function Sidebar({ isOpen }: SidebarProps) {
         </div>
 
         {/* Thematic Hubs (Genres) */}
-        <div className="mb-8">
-          <div className="px-3 mb-2 flex items-center justify-between text-xs font-bold text-gray-400 uppercase tracking-wider">
+        <div className="mb-6">
+          <button 
+            onClick={() => setIsGenresExpanded(!isGenresExpanded)}
+            className="w-full px-3 mb-2 flex items-center justify-between text-xs font-bold text-gray-400 uppercase tracking-wider hover:text-gray-600 transition-colors group/toggle"
+          >
             <span>Thèmes & Genres</span>
-            <ChevronDown className="w-4 h-4" />
-          </div>
-          <div className="space-y-1">
+            <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isGenresExpanded ? "rotate-0" : "-rotate-90"}`} />
+          </button>
+          <div className={`space-y-1 overflow-hidden transition-all duration-300 ${isGenresExpanded ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
             {genres.map((genre) => (
               <SidebarItem
                 key={genre.name}
@@ -92,11 +98,14 @@ export default function Sidebar({ isOpen }: SidebarProps) {
 
         {/* Specific Series / Guilds */}
         <div className="mb-8">
-          <div className="px-3 mb-2 flex items-center justify-between text-xs font-bold text-gray-400 uppercase tracking-wider">
+          <button 
+            onClick={() => setIsSeriesExpanded(!isSeriesExpanded)}
+            className="w-full px-3 mb-2 flex items-center justify-between text-xs font-bold text-gray-400 uppercase tracking-wider hover:text-gray-600 transition-colors"
+          >
             <span>Communautés par Séries</span>
-            <Plus className="w-4 h-4 cursor-pointer hover:text-gray-800" />
-          </div>
-          <div className="space-y-1">
+            <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isSeriesExpanded ? "rotate-0" : "-rotate-90"}`} />
+          </button>
+          <div className={`space-y-1 overflow-hidden transition-all duration-300 ${isSeriesExpanded ? "max-h-125 opacity-100" : "max-h-0 opacity-0"}`}>
             {series.map((item) => (
               <SidebarItem
                 key={item.name}

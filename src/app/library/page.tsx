@@ -1,6 +1,7 @@
 "use client";
 
 import { History, BookmarkCheck } from "lucide-react";
+import Image from "next/image";
 import SeriesCard from "@/components/ui/SeriesCard";
 import Button from "@/components/ui/Button";
 import seriesData from "@/data/series.json";
@@ -21,28 +22,39 @@ export default function LibraryPage() {
       <div className="bg-neutral-900 rounded-2xl p-8 shadow-lg relative overflow-hidden">
         <div className="z-10 relative flex flex-col md:flex-row items-end justify-between">
           <div className="flex items-center gap-6">
-            <div className="w-24 h-24 rounded-full bg-linear-to-tr from-primary to-orange-400 p-1">
-              <img
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop"
-                alt="Profile"
-                className="w-full h-full object-cover rounded-full border-4 border-neutral-900"
-              />
+            <div className="relative group/profile">
+              <div className="w-28 h-28 rounded-3xl bg-linear-to-tr from-primary via-orange-400 to-yellow-300 p-1 shadow-2xl transition-transform duration-500 group-hover/profile:scale-105 group-hover/profile:rotate-1">
+                <div className="w-full h-full rounded-[20px] bg-neutral-900 p-1 overflow-hidden relative">
+                  <Image
+                    src="/profile.png"
+                    alt="Profile"
+                    fill
+                    sizes="112px"
+                    className="object-cover rounded-[18px]"
+                    priority
+                  />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-[18px]" />
+                </div>
+              </div>
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-primary rounded-full border-4 border-neutral-900 flex items-center justify-center shadow-lg">
+                <div className="w-2 h-2 bg-neutral-900 rounded-full animate-pulse" />
+              </div>
             </div>
             <div>
               <h1 className="text-3xl font-extrabold text-white flex items-center gap-2">
-                Ma Bibliothèque
+                Larry
               </h1>
-              <p className="text-gray-400 mt-1">3 Lues • 2 À lire</p>
+              <p className="text-gray-400 mt-1">Ma bibliothèque</p>
             </div>
           </div>
           <div className="flex gap-4 mt-6 md:mt-0">
             <div className="text-center">
-              <span className="block text-2xl font-bold text-primary">3</span>
-              <span className="text-xs text-gray-500 uppercase tracking-widest font-semibold">Vérifiées</span>
+              <span className="block text-2xl font-bold text-primary">{librarySeries.length}</span>
+              <span className="text-xs text-gray-500 uppercase tracking-widest font-semibold">Évaluations</span>
             </div>
             <div className="text-center">
-              <span className="block text-2xl font-bold text-white">12</span>
-              <span className="text-xs text-gray-500 uppercase tracking-widest font-semibold">Créateurs</span>
+              <span className="block text-2xl font-bold text-white">{toReadSeries.length}</span>
+              <span className="text-xs text-gray-500 uppercase tracking-widest font-semibold">À lire</span>
             </div>
           </div>
         </div>
