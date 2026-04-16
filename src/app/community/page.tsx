@@ -4,50 +4,49 @@ import { TrendingUp, Clock, Image as ImageIcon, Link as LinkIcon, Flame } from "
 import Button from "@/components/ui/Button";
 import FeedPost from "@/components/ui/FeedPost";
 import SeriesCard from "@/components/ui/SeriesCard";
+import seriesData from "@/data/series.json";
 
 export default function CommunityFeed() {
   const feedPosts = [
     {
       id: 1,
-      community: "c/TheGoldenIris",
+      community: "c/SoloLeveling",
       author: "LoreSeeker99",
       timeAgo: "Il y a 2 heures",
       title: "Théorie sur le Chapitre 45 : La véritable identité de l'Empereur (SPOILERS)",
-      content: "Après avoir relu la scène du banquet au chapitre 12, j'ai remarqué que le reflet de l'Empereur dans les coupes ne correspond pas à son apparence actuelle. Si on regarde de près la couleur des yeux...",
+      content: "Après avoir relu la scène du banquet au chapitre 12, j'ai remarqué que le reflet de l'Empereur dans les coupes ne correspond pas à son apparence actuelle...",
       upvotes: 1205,
       comments: 134,
       tag: "Théorie"
     },
     {
       id: 2,
-      community: "c/ActionShonen",
+      community: "c/Eleceed",
       author: "WebtoonCritique",
       timeAgo: "Il y a 5 heures",
-      title: "Les webtoons d'action modernes s'appuient-ils trop sur les interfaces de système ?",
-      content: "On a l'impression que chaque nouvelle sortie cette semaine présente un protagoniste se réveillant devant un écran holographique bleu. Bien que Solo Leveling l'ait fait parfaitement, n'est-ce pas devenu répétitif ?",
+      title: "Jiwoo vs Kayden : Qui gagnerait vraiment dans un combat sérieux ?",
+      content: "On sait tous que Kayden est le plus fort, mais Jiwoo progresse à une vitesse folle. Dans les derniers chapitres...",
       upvotes: 854,
       comments: 312,
       tag: "Débat"
     },
     {
       id: 3,
-      community: "c/MidnightEspresso",
+      community: "c/WindBreaker",
       author: "CaffeineAddict",
       timeAgo: "Il y a 10 heures",
-      title: "L'auteur confirme que la Saison 2 est en production ! 🎉",
-      content: "Luna P. vient de poster sur sa chaîne officielle que les storyboards de la Saison 2 sont déjà terminés et que nous pouvons attendre une première le mois prochain !",
+      title: "La saison 4 arrive enfin ! 🎉",
+      content: "L'auteur vient de confirmer sur les réseaux sociaux que la suite des aventures de Jay et son équipe reprendra le mois prochain !",
       upvotes: 2400,
       comments: 89,
       tag: "News"
     }
   ];
 
-  const trendingWebtoons = [
-    { id: 1, title: "The Golden Iris", rank: 1, members: "125k", author: "Studio YE", tag: "Fantaisie" },
-    { id: 2, title: "Cybernetic Drift", rank: 2, members: "89k", author: "NeoTokyo", tag: "Sci-Fi" },
-    { id: 3, title: "Midnight Espresso", rank: 3, members: "71k", author: "Luna P.", tag: "Romance" },
-    { id: 4, title: "A Mage's Final Stand", rank: 4, members: "64k", author: "Inconnu", tag: "Fantaisie" },
-  ];
+  const trendingWebtoons = seriesData.slice(0, 4).map((series, index) => ({
+    ...series,
+    rank: index + 1
+  }));
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 pb-12">

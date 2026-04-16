@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "title": "The Beginning After The End",
+    "slug": "the-beginning-after-the-end",
+    "author": "TurtleMe",
+    "artist": "Fuyuki23",
+    "tag": "Fantasy",
+    "genres": ["Action", "Fantasy", "Isekai"],
+    "imageUrl": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx195632-6CvV1sJImlh7.jpg",
+    "rating": 4.9,
+    "members": "2.1M",
+    "synopsis": "Le roi Grey a une force, une richesse et un prestige inégalés dans un monde régi par les capacités martiales. Cependant, la solitude accompagne de si près ceux dotés d'un grand pouvoir. Sous l'apparence glamour d'un roi puissant se cache un homme vide et dénué de but..."
+  },
+  {
+    "id": 2,
+    "title": "Eleceed",
+    "slug": "eleceed",
+    "author": "Son Jeho",
+    "artist": "ZHENA",
+    "tag": "Action",
+    "genres": ["Action", "Comedy", "Supernatural"],
+    "imageUrl": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx106929-flAUvHZDUz5v.jpg",
+    "rating": 4.8,
+    "members": "1.5M",
+    "synopsis": "Jiwoo est un jeune homme au grand cœur qui a un secret : des réflexes de félin surhumains. Kayden est un agent secret qui s'est retrouvé piégé dans le corps d'un vieux gros chat de gouttière très duveteux..."
+  },
+  {
+    "id": 3,
+    "title": "Wind Breaker",
+    "slug": "wind-breaker",
+    "author": "Jo Yongseok",
+    "artist": "Jo Yongseok",
+    "tag": "Sports",
+    "genres": ["Action", "Drama", "Sports"],
+    "imageUrl": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx135083-TQbNFWKGJJHW.jpg",
+    "rating": 4.7,
+    "members": "950K",
+    "synopsis": "Jay est le président des élèves de son lycée. Derrière ses lunettes et son attitude studieuse se cache un cycliste hors pair."
+  },
+  {
+    "id": 4,
+    "title": "Solo Leveling",
+    "slug": "solo-leveling",
+    "author": "Chugong",
+    "artist": "DUBU (REDICE STUDIO)",
+    "tag": "Action",
+    "genres": ["Action", "Fantasy", "Shonen"],
+    "imageUrl": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx105398-b673Vt5ZSuz3.jpg",
+    "rating": 4.8,
+    "members": "1.2M",
+    "synopsis": "Dans un monde où des portails reliant notre monde à des donjons remplis de monstres sont apparus, des personnes ont acquis des pouvoirs pour les chasser : les Chasseurs. Sung Jinwoo est le plus faible des chasseurs de rang E. Après avoir frôlé la mort dans un double donjon caché, il se réveille avec un étrange écran devant lui, lui proposant des quêtes pour devenir plus fort. Il est devenu le seul chasseur capable de monter en niveau !"
+  },
+  {
+    "id": 5,
+    "title": "Omniscient Reader",
+    "slug": "omniscient-reader",
+    "author": "Sing Shong",
+    "artist": "Sleepy-C",
+    "tag": "Fantasy",
+    "genres": ["Action", "Fantasy", "Sci-Fi"],
+    "imageUrl": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx119257-Pi21aq3ey9GG.jpg",
+    "rating": 4.9,
+    "members": "1.8M",
+    "synopsis": "\"Ce roman est devenu la réalité.\" Dokja était un employé de bureau ordinaire dont le seul loisir était la lecture de son web novel préféré « Les Trois Façons de Survivre dans un Monde en Ruine ». Mais le monde devient soudainement celui de l'histoire..."
+  },
+  {
+    "id": 6,
+    "title": "Tower of God",
+    "slug": "tower-of-god",
+    "author": "SIU",
+    "artist": "SIU",
+    "tag": "Adventure",
+    "genres": ["Action", "Adventure", "Fantasy"],
+    "imageUrl": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx85143-23oup3ETbFJk.jpg",
+    "rating": 4.7,
+    "members": "2.5M",
+    "synopsis": "Bam a toujours vécu seul dans l'obscurité, jusqu'à ce que Rachel n'apparaisse. Quand elle décide de le quitter pour gravir la Tour, il la suit."
+  }
+]

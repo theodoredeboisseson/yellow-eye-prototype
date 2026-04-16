@@ -80,7 +80,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
             {genres.map((genre) => (
               <SidebarItem
                 key={genre.name}
-                href={`/t/${genre.name.toLowerCase().replace(/ /g, '-')}`}
+                href={"/community"}
                 label={genre.name}
                 icon={genre.icon}
                 iconClassName={genre.color}
@@ -100,7 +100,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
             {series.map((item) => (
               <SidebarItem
                 key={item.name}
-                href={`/s/${item.name.toLowerCase().replace(/ /g, '-')}`}
+                href={"/community"}
                 label={item.name}
                 icon={item.icon}
                 iconClassName={item.color}

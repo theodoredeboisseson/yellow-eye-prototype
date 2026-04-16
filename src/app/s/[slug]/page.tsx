@@ -1,26 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import Image from "next/image";
 import { BookmarkPlus, MessageSquare, Heart, Share2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import StarRating from "@/components/ui/StarRating";
 
+import { notFound } from "next/navigation";
+import seriesData from "@/data/series.json";
+
 // This is a dynamic route page, for prototype purposes we use static mock data
-export default function SeriesPage({ params }: { params: { slug: string } }) {
+export default function SeriesPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
   const [userRating, setUserRating] = useState<number>(0);
   const [reviewText, setReviewText] = useState("");
 
-  const series = {
-    title: "Solo Leveling",
-    author: "Chugong",
-    artist: "DUBU (REDICE STUDIO)",
-    synopsis: "Dans un monde où des portails reliant notre monde à des donjons remplis de monstres sont apparus, des personnes ont acquis des pouvoirs pour les chasser : les Chasseurs. Sung Jinwoo est le plus faible des chasseurs de rang E. Après avoir frôlé la mort dans un double donjon caché, il se réveille avec un étrange écran devant lui, lui proposant des quêtes pour devenir plus fort. Il est devenu le seul chasseur capable de monter en niveau !",
-    genres: ["Action", "Fantasy", "Shonen"],
-    imageUrl: "https://images.unsplash.com/photo-1580477667995-2b94f01c9516?q=80&w=800&auto=format&fit=crop",
-    rating: 4.8,
-    members: "1.2M",
-  };
+  const series = seriesData.find((s) => s.slug === slug);
+
+  if (!series) {
+    notFound();
+  }
 
   const communityReviews = [
     {
@@ -58,13 +57,25 @@ export default function SeriesPage({ params }: { params: { slug: string } }) {
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative">
         <div className="h-48 md:h-64 w-full relative">
           <div className="absolute inset-0 bg-neutral-900/40 z-10" />
-          <Image src={series.imageUrl} alt={series.title} fill className="object-cover object-top blur-xl scale-110 opacity-60" />
+          <Image 
+            src={series.imageUrl} 
+            alt={series.title} 
+            fill 
+            sizes="100vw"
+            className="object-cover object-top blur-xl scale-110 opacity-60" 
+          />
         </div>
         
         <div className="px-6 md:px-10 pb-10 relative z-20 flex flex-col md:flex-row gap-8 -mt-20">
           {/* Cover */}
           <div className="w-40 md:w-56 shrink-0 rounded-xl overflow-hidden shadow-2xl aspect-3/4 relative ring-4 ring-white">
-            <Image src={series.imageUrl} alt={series.title} fill className="object-cover" />
+            <Image 
+              src={series.imageUrl} 
+              alt={series.title} 
+              fill 
+              sizes="(max-width: 768px) 160px, 224px"
+              className="object-cover" 
+            />
           </div>
           
           {/* Details */}

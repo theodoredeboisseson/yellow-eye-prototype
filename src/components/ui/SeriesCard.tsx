@@ -6,6 +6,7 @@ import { Star } from 'lucide-react';
 interface SeriesCardProps {
   id: number;
   title: string;
+  slug: string;
   author: string;
   tag: string;
   imageUrl?: string;
@@ -15,14 +16,22 @@ interface SeriesCardProps {
   userRating?: number;
 }
 
-const SeriesCard = ({ title, author, tag, imageUrl, members, isCompact, userRating }: SeriesCardProps) => {
+import Link from 'next/link';
+
+const SeriesCard = ({ title, author, tag, imageUrl, members, isCompact, userRating, slug }: SeriesCardProps) => {
   if (isCompact) {
     return (
-      <div className="flex items-center justify-between group cursor-pointer">
+      <Link href={`/s/${slug}`} className="flex items-center justify-between group cursor-pointer">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded bg-gray-200 relative overflow-hidden">
             {imageUrl && (
-              <Image src={imageUrl} alt={title} fill className="object-cover" />
+              <Image 
+                src={imageUrl} 
+                alt={title} 
+                fill 
+                sizes="32px"
+                className="object-cover" 
+              />
             )}
           </div>
           <div>
@@ -31,12 +40,12 @@ const SeriesCard = ({ title, author, tag, imageUrl, members, isCompact, userRati
           </div>
         </div>
         <button className="text-xs font-bold text-gray-400 hover:text-black transition-colors cursor-pointer">Rejoindre</button>
-      </div>
+      </Link>
     );
   }
 
   return (
-    <div className="group cursor-pointer">
+    <Link href={`/s/${slug}`} className="group cursor-pointer block">
       <div className="aspect-3/4 bg-gray-200 rounded-xl overflow-hidden mb-3 relative">
         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 flex flex-col justify-end p-3">
           <span className="text-white text-xs font-bold mb-2">{members || "98.5k"} Lecteurs</span>
@@ -51,6 +60,7 @@ const SeriesCard = ({ title, author, tag, imageUrl, members, isCompact, userRati
             src={imageUrl} 
             alt={title} 
             fill 
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 17vw"
             className="object-cover group-hover:scale-105 transition-transform duration-500" 
           />
         ) : (
@@ -78,7 +88,7 @@ const SeriesCard = ({ title, author, tag, imageUrl, members, isCompact, userRati
       <div className="mt-1">
         <p className="text-xs text-gray-500 font-medium">{author}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

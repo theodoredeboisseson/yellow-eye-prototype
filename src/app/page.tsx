@@ -4,6 +4,7 @@ import { Clock, Star, Users, MessageSquare, Flame } from "lucide-react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import SeriesCard from "@/components/ui/SeriesCard";
+import seriesData from "@/data/series.json";
 
 export default function Home() {
   const categories = [
@@ -12,31 +13,24 @@ export default function Home() {
     { name: "Premium", icon: Star },
   ];
 
-  const featuredSeries = [
-    { id: 1, title: "The Sovereign's Ascent", author: "Studio YE", tag: "Fantasy", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
-    { id: 2, title: "Midnight Espresso", author: "Luna P.", tag: "Romance", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
-    { id: 3, title: "Cybernetic Drift", author: "NeoTokyo", tag: "Sci-Fi", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
-    { id: 4, title: "Solo Leveling", author: "Chugong", tag: "Action", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
-    { id: 5, title: "Omniscient Reader", author: "Sing Shong", tag: "Fantasy", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
-    { id: 6, title: "Tower of God", author: "SIU", tag: "Adventure", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
-  ];
+  const featuredSeries = seriesData;
 
   return (
     <div className="space-y-8 pb-12">
       {/* Hero Banner */}
       <section className="relative w-full h-100 md:h-125 rounded-2xl overflow-hidden shadow-lg group bg-neutral-900">
         <div className="absolute inset-0 bg-linear-to-r from-neutral-900 via-neutral-900/80 to-transparent z-10" />
-        <div className="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1626544827763-d516dce335e2?q=80&w=2067&auto=format&fit=crop')] bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-40 bg-[url('https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx119257-Pi21aq3ey9GG.jpg')] bg-cover bg-center" />
 
         <div className="absolute inset-0 z-20 flex flex-col justify-center p-8 md:p-12 w-full md:w-2/3">
           <span className="ye-tag ye-tag-primary w-fit mb-4">
             Exclusivités récentes
           </span>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
-            The Golden Iris
+            Omniscient Reader
           </h1>
           <p className="text-gray-300 text-base md:text-lg mb-8 max-w-xl">
-            Dans un monde où les secrets sont une monnaie d&#39;échange, elle possède les seuls yeux capables de voir la vérité. Découvrez le webtoon le plus attendu de l&#39;année.
+            "Ce roman est devenu la réalité." Dokja était un employé de bureau ordinaire dont le seul loisir était la lecture de son web novel préféré. Mais le monde devient soudainement celui de l&#39;histoire...
           </p>
           <div className="flex flex-wrap gap-4">
             <Button variant="primary" size="lg" className="shadow-[0_0_15px_rgba(255,215,0,0.4)] hover:scale-105">
@@ -77,7 +71,7 @@ export default function Home() {
             <section key={category.name}>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-                   {category.name} <Icon className="text-primary w-6 h-6" />
+                  {category.name} <Icon className="text-primary w-6 h-6" />
                 </h2>
                 <Button variant="ghost" size="sm" className="font-semibold text-gray-500 hover:text-black">
                   Voir tout

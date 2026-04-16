@@ -1,20 +1,19 @@
 "use client";
 
-import { Star, Library, Disc, History, BookmarkCheck } from "lucide-react";
+import { History, BookmarkCheck } from "lucide-react";
 import SeriesCard from "@/components/ui/SeriesCard";
 import Button from "@/components/ui/Button";
+import seriesData from "@/data/series.json";
 
 export default function LibraryPage() {
-  const librarySeries = [
-    { id: 1, title: "The Sovereign's Ascent", author: "Studio YE", tag: "Fantasy", imageUrl: "https://images.unsplash.com/photo-1541512416146-3cf58d9b271b?q=80&w=400&auto=format&fit=crop", userRating: 5 },
-    { id: 4, title: "Solo Leveling", author: "Chugong", tag: "Action", imageUrl: "https://images.unsplash.com/photo-1580477667995-2b94f01c9516?q=80&w=400&auto=format&fit=crop", userRating: 4.5 },
-    { id: 5, title: "Omniscient Reader", author: "Sing Shong", tag: "Fantasy", imageUrl: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400&auto=format&fit=crop", userRating: 4.5 },
-  ];
+  const librarySeries = seriesData
+    .filter((s) => [1, 4, 5].includes(s.id))
+    .map((s) => ({
+      ...s,
+      userRating: s.id === 1 ? 5 : 4.5,
+    }));
 
-  const toReadSeries = [
-    { id: 2, title: "Midnight Espresso", author: "Luna P.", tag: "Romance", imageUrl: "https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=400&auto=format&fit=crop" },
-    { id: 6, title: "Tower of God", author: "SIU", tag: "Adventure", imageUrl: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=400&auto=format&fit=crop" },
-  ];
+  const toReadSeries = seriesData.filter((s) => [2, 6].includes(s.id));
 
   return (
     <div className="space-y-8 pb-12">
@@ -23,10 +22,10 @@ export default function LibraryPage() {
         <div className="z-10 relative flex flex-col md:flex-row items-end justify-between">
           <div className="flex items-center gap-6">
             <div className="w-24 h-24 rounded-full bg-linear-to-tr from-primary to-orange-400 p-1">
-              <img 
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop" 
-                alt="Profile" 
-                className="w-full h-full object-cover rounded-full border-4 border-neutral-900" 
+              <img
+                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop"
+                alt="Profile"
+                className="w-full h-full object-cover rounded-full border-4 border-neutral-900"
               />
             </div>
             <div>

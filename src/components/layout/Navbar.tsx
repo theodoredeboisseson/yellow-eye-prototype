@@ -24,7 +24,7 @@ export default function Navbar({ toggleSidebar }: NavbarProps) {
         <Link href="/" className="flex items-center gap-2 group">
           <div className="relative size-10 transition-transform group-hover:scale-105">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="Yellow Eye Logo"
               fill
               className="object-contain rounded"
